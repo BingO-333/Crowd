@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Characters;
 using Level;
 using UI;
 using UnityEngine;
@@ -15,8 +16,7 @@ public class Crowd : MonoBehaviour
     
     [HideInInspector] public PlayerInfo Player;
 
-
-    private List<Character.Character> _characters = new List<Character.Character>();
+    private List<Character> _characters = new List<Character>();
 
     private int _kills;
     
@@ -50,7 +50,7 @@ public class Crowd : MonoBehaviour
         if (!_isActive)
             return;
         
-        if (other.TryGetComponent(out Character.Character character) && character.TryCapture(Player))
+        if (other.TryGetComponent(out Character character) && character.TryCapture(Player))
             AddCharacter(character);
     }
 
@@ -59,16 +59,22 @@ public class Crowd : MonoBehaviour
         if (!_isActive)
             return;
         
-        if (other.TryGetComponent(out Crowd crowd) && crowd.CharactersCount <= 1 && CharactersCount > 1)
+        if (other.TryGetComponent(out PlayerInfo otherPlayer) && otherPlayer.Crowd.CharactersCount < CharactersCount)
         {
             _kills++;
             OnKill?.Invoke(_kills);
 
-            crowd.Die(Player);
+            foreach (var character in otherPlayer.Crowd.GetCharacters())
+            {
+                if (character.TryCapture(Player))
+                    AddCharacter(character);
+            }
+            
+            otherPlayer.Crowd.Die(Player);
         }
     }
 
-    public void RemoveCharacter(Character.Character character)
+    public void RemoveCharacter(Character character)
     {
         if (_characters.Contains(character))
         {
@@ -77,13 +83,15 @@ public class Crowd : MonoBehaviour
         }
     }
 
+    public Character[] GetCharacters() => _characters.ToArray();
+
     private void Die(PlayerInfo killer) => OnDie?.Invoke(Player, killer);
 
     private void Active() => _isActive = true;
 
     private void Inactive() => _isActive = false;
 
-    private void AddCharacter(Character.Character character)
+    private void AddCharacter(Character character)
     {
         _characters.Add(character);
         OnCharacterCountChange?.Invoke(CharactersCount);

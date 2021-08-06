@@ -1,4 +1,5 @@
 using System;
+using Level;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ namespace UI
 {
     public class KillsView : MonoBehaviour
     {
-        [SerializeField] private PlayersManager _playersManager;
+        private PlayersManager _playersManager;
         
         private Text _kills;
 
@@ -17,6 +18,8 @@ namespace UI
 
         private void Start()
         {
+            _playersManager = LevelManager.Instance.PlayersManager;
+            
             _playersManager.Player.Crowd.OnKill += UpdateKillUI;
         }
 

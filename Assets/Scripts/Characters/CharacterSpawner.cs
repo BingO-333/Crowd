@@ -4,7 +4,7 @@ using Level;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Character
+namespace Characters
 {
     public class CharacterSpawner : MonoBehaviour
     {

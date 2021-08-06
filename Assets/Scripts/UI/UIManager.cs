@@ -35,10 +35,8 @@ namespace UI
 
         public void InstantiateCharacterCountView(Crowd crowd)
         {
-            CharactersCountView view = Instantiate(_charactersCountViewPrefab);
+            CharactersCountView view = Instantiate(_charactersCountViewPrefab, _charactersCountViewPanel);
             view.Instance(crowd);
-            
-            view.transform.SetParent(_charactersCountViewPanel);
         }
 
         public void OpenLevelScreen()

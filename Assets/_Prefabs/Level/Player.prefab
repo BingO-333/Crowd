@@ -60,7 +60,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7494708558409318597
 MonoBehaviour:
@@ -75,7 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  _countViewPrefab: {fileID: 4285107085619592233, guid: 5f5a65af5ba086f4cbd6d4f1ab64f63a, type: 3}
 --- !u!1 &7494708559895111824
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +89,7 @@ GameObject:
   - component: {fileID: 4053982352921258975}
   - component: {fileID: 2148265675406771806}
   - component: {fileID: 9041348218873302546}
+  - component: {fileID: 2861541897594940770}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 6
-  _rotateSpeed: 1.5
+  _rotateSpeed: 4
 --- !u!114 &4053982352921258975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +186,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773dc93168ee37b4582bd735f6812486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &2861541897594940770
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494708559895111824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &8836451676926104995
 PrefabInstance:
   m_ObjectHideFlags: 0

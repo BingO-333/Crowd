@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Character
+namespace Characters
 {
     public class CharacterSkin : MonoBehaviour
     {

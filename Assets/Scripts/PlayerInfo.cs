@@ -1,4 +1,4 @@
-using Character;
+using Characters;
 using Level;
 using UnityEngine;
 

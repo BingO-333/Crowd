@@ -1352,7 +1352,6 @@ MonoBehaviour:
   _top1: {fileID: 842568571}
   _top2: {fileID: 1319110017}
   _top3: {fileID: 1334789205}
-  _playersManager: {fileID: 777802317}
 --- !u!1 &687160914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,8 +2493,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersManager: {fileID: 777802317}
-  _offset: {x: 0, y: 20, z: -12}
+  _offset: {x: 0, y: 15, z: -9}
   _smooth: 4
+  _multiplierPerCharacter: 0.005
+  _maxMultiplier: 0.5
 --- !u!1 &1090296150
 GameObject:
   m_ObjectHideFlags: 0

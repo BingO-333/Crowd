@@ -3,13 +3,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace Character
+namespace Characters
 {
     [RequireComponent(typeof(CharacterAnimator), typeof(CharacterSkin), typeof(NavMeshAgent))]
     public class Character : MonoBehaviour
     {
         public ECharacterState State = ECharacterState.Free;
-   
+
+        [SerializeField] private int _runSpeed = 15;
+        
         private PlayerInfo _leader;
 
         private NavMeshAgent _agent;
@@ -20,7 +22,7 @@ namespace Character
 
         private CharacterAnimator _characterAnimator;
 
-        private Vector3 _offset;
+        private Vector2 _offset;
 
         private void Awake()
         {
@@ -49,7 +51,7 @@ namespace Character
 
         public bool TryCapture(PlayerInfo playerInfo)
         {
-            if (_leader != null && playerInfo.Crowd.CharactersCount < _leader.Crowd.CharactersCount)
+            if (_leader != null && playerInfo.Crowd.CharactersCount < _leader.Crowd.CharactersCount || _leader == playerInfo)
                 return false;
         
             if (_leader != null)
@@ -58,10 +60,10 @@ namespace Character
             _leader = playerInfo;
             State = ECharacterState.Captured;
 
-            Vector3 distanceFromBehind = Vector3.back * _leader.Crowd.CharactersCount * 0.05f;
-            Vector2 randomCircleOffset = Random.insideUnitCircle * 2;
+            _agent.speed = _runSpeed;
             
-            _offset = distanceFromBehind + new Vector3(randomCircleOffset.x, 0, randomCircleOffset.y);
+            _offset.y = _leader.Crowd.CharactersCount * 0.1f;
+            _offset.x = Random.Range(-3, 3);
 
             _characterAnimator.ChangeAnimationState(CharacterAnimator.ECharacterAnimationState.Run);
             _skin.SetColor(_leader.Color);
@@ -80,7 +82,7 @@ namespace Character
 
         private void CapturedMove()
         {
-            Vector3 pos = _leader.transform.position + _leader.transform.right * _offset.x + _leader.transform.forward * _offset.z;
+            Vector3 pos = _leader.transform.position - _leader.transform.forward * _offset.y + _leader.transform.right * _offset.x;
             _agent.SetDestination(pos);
         } 
     

@@ -54,16 +54,17 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\UI\InputController.cs" />
-     <Compile Include="Assets\Scripts\Character\CharacterAnimator.cs" />
-     <Compile Include="Assets\Scripts\Character\CharacterSkin.cs" />
-     <Compile Include="Assets\Scripts\Character\Character.cs" />
+     <Compile Include="Assets\Scripts\Characters\CharacterAnimator.cs" />
+     <Compile Include="Assets\Scripts\Characters\CharacterSkin.cs" />
+     <Compile Include="Assets\Scripts\Characters\Character.cs" />
+     <Compile Include="Assets\Scripts\Bots\BotFieldOfVision.cs" />
      <Compile Include="Assets\Scripts\Crowd.cs" />
      <Compile Include="Assets\Scripts\Bots\BotMovement.cs" />
      <Compile Include="Assets\Scripts\UI\UIManager.cs" />
      <Compile Include="Assets\Scripts\UI\TopPlayersView.cs" />
      <Compile Include="Assets\Scripts\PlayersManager.cs" />
      <Compile Include="Assets\Scripts\UI\KillsView.cs" />
-     <Compile Include="Assets\Scripts\Character\CharacterSpawner.cs" />
+     <Compile Include="Assets\Scripts\Characters\CharacterSpawner.cs" />
      <Compile Include="Assets\Scripts\Level\SpawnerByArea.cs" />
      <Compile Include="Assets\Scripts\Player\SetNickname.cs" />
      <Compile Include="Assets\Scripts\UI\BestScoreVIew.cs" />
@@ -73,7 +74,6 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
      <Compile Include="Assets\Scripts\UI\CharactersCountView.cs" />
-     <Compile Include="Assets\Scripts\Bots\BotFieldOfVision.cs" />
      <None Include="Assets\POLYGON city pack\Read_me.txt" />
  <Reference Include="UnityEngine">
  <HintPath>F:/Work/Unity/2020.3.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

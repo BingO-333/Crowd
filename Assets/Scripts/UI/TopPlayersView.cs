@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using Level;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +10,17 @@ namespace UI
     {
         [SerializeField] private Text _top1, _top2, _top3;
 
-        [SerializeField] private PlayersManager _playersManager;
+        private PlayersManager _playersManager;
 
-        private void FixedUpdate()
+        private void Start()
+        {
+            _playersManager = LevelManager.Instance.PlayersManager;
+
+            foreach (PlayerInfo player in _playersManager.Players)
+                player.Crowd.OnCharacterCountChange += UpdateUI;
+        }
+
+        private void UpdateUI(int value)
         {
             PlayerInfo[] topPlayers = _playersManager.Players.OrderByDescending(p => p.Crowd.CharactersCount).ToArray();
 
